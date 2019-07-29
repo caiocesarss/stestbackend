@@ -1,0 +1,11 @@
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+RUN node --max-old-space-size=8192 --optimize-for-size
+
+COPY package.json yarn.lock ./
+
+RUN yarn 
+
+CMD ["yarn", "start"]
